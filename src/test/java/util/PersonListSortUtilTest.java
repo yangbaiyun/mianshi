@@ -33,7 +33,7 @@ public class PersonListSortUtilTest {
     /**
      * 测试排序基本功能
      */
-    @Test
+    @org.junit.Test
     public void sortPersonListByTitle() {
 
           String[] sortKeyWords = {"总经理","副经理","产品经理"};
@@ -48,7 +48,7 @@ public class PersonListSortUtilTest {
     /**
      * 测试排序 职位为null值
      */
-    @Test
+    @org.junit.Test
     public void testSortPersonListByTitle2() {
 
         String[] sortKeyWords = {"总经理","副经理","产品经理"};
@@ -62,13 +62,14 @@ public class PersonListSortUtilTest {
         Assert.assertEquals("测试职位排序基本功能",sortKeyWords[2],personList.get(2).getTitle());
 
         Assert.assertEquals("测试职位排序-职位存在null值",null,personList.get(personList.size()-1).getTitle());
+
     }
 
 
     /**
      * 测试排序 职位为""值
      */
-    @Test
+    @org.junit.Test
     public void testSortPersonListByTitle3() {
 
         String[] sortKeyWords = {"总经理","副经理","产品经理"};
@@ -81,13 +82,14 @@ public class PersonListSortUtilTest {
         Assert.assertEquals("测试职位排序基本功能",sortKeyWords[2],personList.get(2).getTitle());
 
         Assert.assertEquals("测试职位排序-职位存在“”值","",personList.get(personList.size()-1).getTitle());
+
     }
 
 
     /**
      * 测试排序 某人有多个职位
      */
-    @Test
+    @org.junit.Test
     public void testSortPersonListByTitle4() {
 
         String[] sortKeyWords = {"总经理","副经理","产品经理","运维"};
@@ -109,16 +111,17 @@ public class PersonListSortUtilTest {
     /**
      * 测试排序 不支持模糊匹配测试
      */
-    @Test
+    @org.junit.Test
     public void testSortPersonListByTitle5() {
 
-        String[] sortKeyWords = {"总经理","副经理"};
+        String[] sortKeyWords = {"经理"};
 
         PersonListSortUtil.sortPersonListByTitle(personList,sortKeyWords);
 
-        Assert.assertEquals("测试职位排序基本功能",sortKeyWords[0],personList.get(0).getTitle());
-        Assert.assertEquals("测试职位排序基本功能",sortKeyWords[1],personList.get(1).getTitle());
-        Assert.assertEquals("测试职位排序-不支持模糊匹配测试","前端工程师",personList.get(2).getTitle());
+        Assert.assertEquals("测试职位排序基本功能-不支持模糊匹配","测试工程师",personList.get(0).getTitle());
+
+
+
     }
 
 

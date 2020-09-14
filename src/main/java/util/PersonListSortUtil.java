@@ -36,7 +36,7 @@ public class PersonListSortUtil {
         for(String sortWord:sortKeyWords)
         {
 
-            String pattern = ".*[,]?"+sortWord+"[,]?.*";//职位匹配模式
+
             for(int i = 0;i < personList.size();i++)
             {
 
@@ -45,10 +45,14 @@ public class PersonListSortUtil {
                     continue;
 
                 //如果匹配该职位名称 则personList.get(index)与当前personList.get(i) 交换
-                if(Pattern.matches(pattern, person.getTitle()))
+                String[] titles = person.getTitle().split(",");
+                for(int k = 0;k<titles.length;k++)
                 {
-                    personList.set(i,personList.get(index));
-                    personList.set(index++,person);
+                    if(titles[k].equals(sortWord))
+                    {
+                        personList.set(i,personList.get(index));
+                        personList.set(index++,person);
+                    }
                 }
 
             }
