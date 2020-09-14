@@ -52,6 +52,7 @@ public class PersonListSortUtil {
                     {
                         personList.set(i,personList.get(index));
                         personList.set(index++,person);
+                        break;
                     }
                 }
 
